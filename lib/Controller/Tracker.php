@@ -14,7 +14,7 @@ class Controller_Tracker extends \AbstractController {
         $account=$this->api->getConfig('google/analytics/account',false);
         if($account===false)return $this->destroy();
 
-        $this->api->add('Html',null,'js_include')->set(<<<EOF
+        $this->api->add('Text',null,'huj')->setHTML(<<<EOF
 <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '$account']);
