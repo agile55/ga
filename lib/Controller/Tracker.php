@@ -22,13 +22,12 @@ class Controller_Tracker extends \AbstractController {
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', '$account');
-  ga('send', 'pageview');
 </script>        
 EOF
         );
 
         $this->api->addHook('post-init',function($api){
-            $api->page_object->js(true,"_gaq.push(['_trackPageview', '/".$api->page."']);");
+            $api->page_object->js(true,"ga('send','pageview', '/".$api->page."');");
         });
     }
     function setCustomVar($index,$name,$value,$opt_scope){
