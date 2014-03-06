@@ -27,7 +27,9 @@ EOF
         );
 
         $this->api->addHook('post-init',function($api){
-            $api->page_object->js(true,"ga('send','pageview', '/".$api->page."');");
+            $p=$api->page;
+            if($p=='index')$p='';
+            $api->page_object->js(true,"ga('send','pageview', '/".$p."');");
         });
     }
     function setCustomVar($index,$name,$value,$opt_scope){
